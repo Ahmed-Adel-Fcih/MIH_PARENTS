@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/templates/simple.xhtml">
+	<ui:define name="title">
+#{bundle['application.loginpage.title']}
+</ui:define>
+	<ui:define name="header">
+		<div id="leftfooter">
+			<p:commandButton value="logo"></p:commandButton>
+		</div>
+		<div id="rightfooter">
+			<div id="rightfooter">
+				<p:commandButton value="login"></p:commandButton>
+				<p:commandButton value="sign up"></p:commandButton>
+			</div>
+			<div id="rightfooter">
+				<h:form>
+					<p:commandButton id="dynaButton"
+						value="#{notification.unreadCount}" type="button"
+						icon="ui-icon-extlink" />
+					<p:menu id="menu" overlay="true" trigger="dynaButton" my="left top"
+						at="left bottom" model="#{notification.unreadMenu}">
+					</p:menu>
+					<p:poll interval="50"
+						listener="#{notification.pullNewNotifications()}" update="menu"
+						onsuccess="updateCount()" />
+					<p:remoteCommand name="updateCount" update="dynaButton" />
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+	<ui:define name="leftcontent">
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true" />
+			<p:accordionPanel>
+				<p:ajax event="tabChange" listener="#{user.onChange}"></p:ajax>
+				<p:tab title="Godfather Part I">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="The story begins as Don Vito Corleone..." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part II">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="Francis Ford Coppola's legendary..." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part III">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="After a break of more than 15 years..." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part IIII">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="After a break of more than 15 years..." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part IIII">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="After a break of more than 15 years..." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part IIII">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="After a break of more than 15 years..." />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Godfather Part IIII">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="After a break of more than 15 years..." />
+					</h:panelGrid>
+				</p:tab>
+			</p:accordionPanel>
+		</h:form>
+	</ui:define>
+	<ui:define name="rightcontent">
+
+	</ui:define>
+</ui:composition>
+</html>

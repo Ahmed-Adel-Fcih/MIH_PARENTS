@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<link href="#{request.contextPath}/css/loginstyle.css" rel="stylesheet"
+	type="text/css" />
+</head>
+<body>
+	<section class="container">
+		<div class="login">
+			<h:form>
+				<h1>Login to Our Web App</h1>
+				<h:panelGrid columns="1">
+					<p:inputText placeholder="Enter User Name Or Your Email"
+						id="userName" value="#{user.name}" required="true"
+						requiredMessage="#{bundle['user.name.validation']}">
+					</p:inputText>
+					<p:message for="userName" styleClass="errorMessage" />
+					<p:password placeholder="Enter Password" id="password"
+						value="#{user.password}" required="true"
+						requiredMessage="#{bundle['user.password.validation']}">
+					</p:password>
+					<p:message for="password" styleClass="errorMessage" />
+				</h:panelGrid>
+				<div>
+					<p class="remember_me">
+						<p:selectBooleanCheckbox />
+						<h:outputText value="Remember me on this computer" />
+					</p>
+					<p class="submit">
+						<p:commandButton class="commandButton"
+							value="#{bundle['application.login']}" action="index">
+						</p:commandButton>
+					</p>
+				</div>
+			</h:form>
+		</div>
+	</section>
+</body>
+</html>
